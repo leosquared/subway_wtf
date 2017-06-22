@@ -6,8 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+# Mac files
+.DS_Store
+*/.DS_Store
+
 # Credentials
-*CREDS.py
+*CREDS.json
 
 # Distribution / packaging
 .Python
