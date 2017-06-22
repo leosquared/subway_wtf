@@ -28,18 +28,15 @@ client = api_client(
     )
 next_q = None
 
-# with open('status_historical.csv', 'w') as outfile:
-#     writer = csv.writer(outfile)
-#     writer.writerow(('tweet_id', 'tweet_content', 'timestamp'))
-#     while next_q != '':
-#         r = client.request(url, method='GET', body=b'', headers=None)
-#         statuses = json.loads(r[1]).get('statuses')
-#         next_q = json.loads(r[1]).get('search_metadata').get('next_results', '')
-#         print(json.loads(r[1]).get('search_metadata'))
-#         url = search_endpoint+next_q
-#         fmt_statuses = [("'"+x.get('id_str'), x.get('text'), x.get('created_at')) for x in statuses]
-#         print('received {} statuses'.format(len(statuses)))
-#         writer.writerows(fmt_statuses)
-
-r = client.request(search_term+'?max_id=874642399817064447&q=from%3ANYCTSubway%20-filter%3Aretweets%20-filter%3Areplies&count=100&include_entities=1', method='GET', body=b'', headers=None)
-print(r)
+with open('status_historical.csv', 'w') as outfile:
+    writer = csv.writer(outfile)
+    writer.writerow(('tweet_id', 'tweet_content', 'timestamp'))
+    while next_q != '':
+        r = client.request(url, method='GET', body=b'', headers=None)
+        statuses = json.loads(r[1]).get('statuses')
+        next_q = json.loads(r[1]).get('search_metadata').get('next_results', '')
+        print(json.loads(r[1]).get('search_metadata'))
+        url = search_endpoint+next_q
+        fmt_statuses = [("'"+x.get('id_str'), x.get('text'), x.get('created_at')) for x in statuses]
+        print('received {} statuses'.format(len(statuses)))
+        writer.writerows(fmt_statuses)
