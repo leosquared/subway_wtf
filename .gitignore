@@ -106,3 +106,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+#serverless
+.serverless
+node_modules
+.requirements
+*.zip
+*.csv

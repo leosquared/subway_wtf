@@ -1,0 +1,20 @@
+service: subwayWTF
+
+provider:
+  name: aws
+  runtime: python3.6
+
+package:
+  exclude:
+    - venv
+
+functions:
+  twitter:
+    handler: 10tweets.get_tweets
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    zip: true
