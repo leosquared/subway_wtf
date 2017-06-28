@@ -10,7 +10,7 @@ package:
 
 functions:
   twitter:
-    handler: 10tweets.get_tweets
+    handler: 6hours.6hours
 
 plugins:
   - serverless-python-requirements
